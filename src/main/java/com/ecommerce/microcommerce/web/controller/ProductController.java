@@ -101,7 +101,7 @@ public class ProductController {
 
     //Pour les tests
     @GetMapping(value = "test/produits/{prix}")
-    public List<Product>  testeDeRequetes(@PathVariable int prix) {
+    public List<Product> testeDeRequetes(@PathVariable int prix) {
         return productDao.chercherUnProduitCher(400);
     }
 
@@ -120,4 +120,12 @@ public class ProductController {
         return margeProduitMap;
     }
 
+    /**
+     * Retourne la liste de tous les produits triés par nom croissant
+     * @return
+     */
+    @GetMapping(value = "/trierProduits/nom")
+    public List<Product> trierProduitsParOrdreAlphabetique() {
+		return productDao.findByOrderByNomAsc();
+    }
 }
